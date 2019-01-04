@@ -7,8 +7,7 @@ for k = 2:e
 end
 inter(:,end+1) = temp_table6(1,3);
 inter(:,end+1) =  temp_table6(1,2);
-out = [];
-perms_e = perms([1:e]);
+  perms_e = perms([1:e]);
 
 if e==1
     out = sum([inter(:,1)./inter(:,end)...

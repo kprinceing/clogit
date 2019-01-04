@@ -4,9 +4,9 @@ function f_obj=GMM2(params, sample, C2, C3, C4, C5, Emax)
 % *       1                    2              3            4              5     
 % *      id                 clg_id        choice     sch_score     dist    
 % *       6                    7              8            9             10    
-% *   clg_avlb         clg_unavlb   indicator     e_xb      sum_e_xb_c
+% *   clg_avlb         clg_unavlb        indicator     e_xb      sum_e_xb_c
 % *      11                  12             13          14             15
-% * sum_e_xb_ca   p_c(term2_1)     p_ca       term1     e_xb_choice 
+% * sum_e_xb_ca   p_c(term2_1)              p_ca       term1     e_xb_choice 
 
 %% Term 1
 
@@ -16,7 +16,7 @@ sample(:, end+1) = e_xb;
 % col10 sum_e_xb_c
 group_sum = accumarray(sample(:,1), e_xb);
 sample(:, end+1) = group_sum(sample(:,1));
-% col11 sum_e_xb_ca
+% col11 sum_e_xb_ca 
 group_sum = accumarray(sample(sample(:,6)==1,1), e_xb(sample(:,6)==1,:));
 sample(:, end+1) = group_sum(sample(:,1));
 % col12-13 p_c p_ca
@@ -31,7 +31,7 @@ sample(:, end+1) = group_sum(sample(:,1));
 
 %% Term 2toEmax
 term2toEmax = [unique(sample(:,1), 'rows'), sample(sample(:,3)==1,12)];
-for i = 1:max(sample(:,1)) % 97 1 99 2 59 3 76 6
+for i = 1:max(sample(:,1))
     temp_table6 = sample(sample(:,1)==i & sample(:,7)==1,[9 10 15]); %e_xb sumexbc exbchoice
     if size(temp_table6,1)>=4 && Emax>=5
         e = 5;

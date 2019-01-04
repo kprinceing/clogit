@@ -1,7 +1,7 @@
 %% Load data
 clear;
 clc;
-cd 'E:\Research\RA\songyan\gaokao\Gaokao_StataOpt\matlab_version';
+cd 'C:\Users\1\Dropbox\college_entrance_exam\data';
 format long
 sample = csvread('../sample.csv',1,0);
 % v = uint8([1:1:126]);
